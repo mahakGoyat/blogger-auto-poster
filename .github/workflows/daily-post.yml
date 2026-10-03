@@ -1,0 +1,75 @@
+name: Daily Blog Post
+
+# Three runs a day, every day. The runner uses UTC, so these are
+# 09:00, 13:00 and 18:00 in India Standard Time (UTC+5:30).
+# You can also start a run by hand from the Actions tab.
+on:
+  schedule:
+    - cron: "30 3 * * *"
+    - cron: "30 7 * * *"
+    - cron: "30 12 * * *"
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: '"true" saves a Blogger draft, "false" publishes live.'
+        required: false
+        default: "true"
+        type: string
+
+# Only one run at a time, so two posts can never be published together.
+concurrency:
+  group: blogger-auto-poster-publish
+  cancel-in-progress: false
+
+# Needed to push the updated topics.json and state.json back to the repo.
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Write and publish one post
+    runs-on: ubuntu-latest
+    # A whole run (AI writing + publishing) should never take more than 15 minutes.
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate and publish one post
+        # Secrets and variables are passed as environment variables only.
+        # Nothing is written to a file, and nothing is printed.
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+          WEBSITE_URL: ${{ vars.WEBSITE_URL }}
+          DRAFT_MODE: ${{ inputs.draft || vars.DRAFT_MODE || 'true' }}
+          # Optional: only set these repository variables if Groq retires a model.
+          GROQ_PRIMARY_MODEL: ${{ vars.GROQ_PRIMARY_MODEL }}
+          GROQ_FALLBACK_MODEL: ${{ vars.GROQ_FALLBACK_MODEL }}
+          GROQ_REASONING_EFFORT: ${{ vars.GROQ_REASONING_EFFORT }}
+        run: npm run post
+
+      - name: Commit updated topics.json and state.json (only if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- topics.json state.json; then
+            echo "No changes in topics.json or state.json, nothing to commit."
+            exit 0
+          fi
+          git add topics.json state.json
+          git commit -m "chore: update topics and state after publishing a post"
+          git push

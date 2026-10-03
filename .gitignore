@@ -70,6 +70,21 @@ web_modules/
 .env.*
 !.env.example
 
+# Google OAuth / API credential files (downloaded outside the repo, but never commit)
+client_secret*.json
+client_secret_*.json
+credentials.json
+*-credentials.json
+token.json
+tokens.json
+refresh-token*.json
+service-account*.json
+serviceaccount*.json
+*secret*.json
+
+# Note: "out/" (DRY_RUN previews) is already ignored further down this file.
+
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

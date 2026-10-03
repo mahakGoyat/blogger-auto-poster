@@ -1,0 +1,25 @@
+{
+  "name": "blogger-auto-poster",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automatically writes a resume and job-application blog post and publishes it to Google Blogger.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "post": "tsx src/index.ts",
+    "dry-run": "cross-env DRY_RUN=true tsx src/index.ts",
+    "get-token": "tsx scripts/get-refresh-token.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "cross-env": "^7.0.3",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
