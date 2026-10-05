@@ -1,12 +1,10 @@
 name: Daily Blog Post
 
-# Three runs a day, every day. The runner uses UTC, so these are
-# 09:00, 13:00 and 18:00 in India Standard Time (UTC+5:30).
-# You can also start a run by hand from the Actions tab.
+# Two runs a day, every day. The runner uses UTC, so these are
+# 09:00 and 18:00 in India Standard Time (UTC+5:30).
 on:
   schedule:
     - cron: "30 3 * * *"
-    - cron: "30 7 * * *"
     - cron: "30 12 * * *"
   workflow_dispatch:
     inputs:
