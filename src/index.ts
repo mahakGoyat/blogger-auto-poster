@@ -36,6 +36,7 @@ import {
   reviewHtml,
 } from "./html.js";
 import { getAccessToken, publishPost } from "./blogger.js";
+import { getCoverImage, insertCoverImage } from "./images.js";
 import {
   allTopicTitles,
   appendTopics,
@@ -149,6 +150,23 @@ async function main(): Promise<void> {
   logInfo(`Words: ${countWords(html)}. Labels: ${buildLabels(title).join(", ")}.`);
   logWarnings(reviewHtml(html));
 
+  // ----------------------------------------------------------- cover image
+  // One photo at the very top of the post (Blogger uses it as the thumbnail).
+  // If anything goes wrong we only get a warning, and the post goes out
+  // without an image.
+  const image = await getCoverImage({
+    title,
+    apiKey: config.pixabayApiKey,
+    usedImageIds: state.usedImageIds,
+  });
+
+  if (image) {
+    html = insertCoverImage(html, image);
+    logInfo(`Cover image added at the top (Pixabay id ${image.id}).`);
+  } else {
+    logWarn("Publishing this post without a cover image.");
+  }
+
   // -------------------------------------------------------------- dry run
   if (config.dryRun) {
     await savePreview(title, html, isLinkPost);
@@ -183,6 +201,8 @@ async function main(): Promise<void> {
     publishedTitles: [...state.publishedTitles, title],
     lastPublishedAt: new Date().toISOString(),
     lastPublishedUrl: published.url,
+    // Remember the photo too, so the next post never reuses it.
+    usedImageIds: image ? [...state.usedImageIds, image.id] : state.usedImageIds,
   };
   await writeState(newState);
 
@@ -195,6 +215,7 @@ async function main(): Promise<void> {
       `- Title: ${title}`,
       `- Topic: ${topic.title}`,
       `- Website link: ${isLinkPost ? "yes" : "no"}`,
+      `- Cover image: ${image ? `Pixabay id ${image.id}` : "none"}`,
       `- Words: ${countWords(html)}`,
       `- Post count: ${newState.postCount}`,
     ].join("\n"),

@@ -31,6 +31,14 @@ export async function writeTopics(topics: Topic[]): Promise<void> {
 
 /** Reads state.json from disk. Missing file starts a fresh state. */
 export async function readState(): Promise<State> {
+  const empty: State = {
+    postCount: 0,
+    publishedTitles: [],
+    lastPublishedAt: null,
+    lastPublishedUrl: null,
+    usedImageIds: [],
+  };
+
   try {
     const raw = await readFile(STATE_FILE, "utf8");
     const parsed = JSON.parse(raw);
@@ -39,9 +47,11 @@ export async function readState(): Promise<State> {
       publishedTitles: Array.isArray(parsed.publishedTitles) ? parsed.publishedTitles : [],
       lastPublishedAt: parsed.lastPublishedAt ?? null,
       lastPublishedUrl: parsed.lastPublishedUrl ?? null,
+      // Older state.json files have no image list yet, so default to empty.
+      usedImageIds: Array.isArray(parsed.usedImageIds) ? (parsed.usedImageIds as number[]) : [],
     };
   } catch {
-    return { postCount: 0, publishedTitles: [], lastPublishedAt: null, lastPublishedUrl: null };
+    return empty;
   }
 }
 

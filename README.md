@@ -16,6 +16,7 @@ and publishes it to your Google Blogger blog automatically.
 | --- | --- |
 | A Google Blogger blog | [blogger.com](https://www.blogger.com) |
 | A Groq API key | [console.groq.com/keys](https://console.groq.com/keys) |
+| A Pixabay API key (for the cover image) | [pixabay.com/api/docs](https://pixabay.com/api/docs) |
 | A Google OAuth client (type **Desktop app**) | [Google Cloud console](https://console.cloud.google.com/apis/credentials) |
 | Your blog ID | Blogger -> Settings -> Publishing -> **Blog ID** |
 | Your website URL | The site you want to promote |
@@ -47,6 +48,7 @@ npm install
 
    ```
    GROQ_API_KEY=your-groq-key
+   PIXABAY_API_KEY=your-pixabay-key
    GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com
    GOOGLE_CLIENT_SECRET=your-client-secret
    GOOGLE_REFRESH_TOKEN=your-refresh-token
@@ -106,6 +108,7 @@ Push this project to a GitHub repository, then add the values under
 | Secret | Value |
 | --- | --- |
 | `GROQ_API_KEY` | your Groq API key |
+| `PIXABAY_API_KEY` | your Pixabay API key (optional, for the cover image) |
 | `GOOGLE_CLIENT_ID` | from the helper |
 | `GOOGLE_CLIENT_SECRET` | from the helper |
 | `GOOGLE_REFRESH_TOKEN` | from the helper |
@@ -195,7 +198,33 @@ using the `github-actions[bot]` identity).
 
 ---
 
-## 10. What happens when something goes wrong?
+## 10. Cover images (Pixabay)
+
+Every post starts with one cover photo, added by `src/images.ts`:
+
+1. The AI reads the post title and writes a short image search query (2-4 words, something a photo
+   can really show, for example `person writing resume` or `job interview office`). If the AI
+   cannot help, the script uses `resume job interview`.
+2. Pixabay is searched for a horizontal, safe-searched photo of at least 1000px wide.
+3. The first photo whose id is **not** in `state.json` -> `usedImageIds` is used, so images never
+   repeat. The id is only added after Blogger accepts the post.
+4. The photo is inserted at the very top of the post, because Blogger uses the first image of a
+   post as its thumbnail, with a short credit line ("Image by ... from Pixabay").
+
+Two things worth knowing:
+
+- **24 hour cache**: Pixabay asks that the same search is not repeated more than once a day, so
+  search results are cached in memory for 24 hours.
+- **Image hosting**: right now the script links to Pixabay's own image file. Pixabay says those
+  URLs are only guaranteed to work for about **24 hours**, so old posts may lose their picture
+  later. If we ever want permanent images, the fix is small: download the photo and host it
+  ourselves. Only the `buildImageUrl()` function in `src/images.ts` needs to change - nothing else.
+- The image is **never** a reason for a run to fail. A missing key, no results or an API error only
+  prints a warning, and the post is published without an image.
+
+---
+
+## 11. What happens when something goes wrong?
 
 - Rate limits (HTTP 429) and temporary errors are retried up to 3 times with exponential backoff.
 - If the main model still fails, the script tries the fallback model `openai/gpt-oss-20b`.
@@ -224,7 +253,7 @@ Set the new name in your `.env` file locally, or as a GitHub **Variable** on the
 
 ---
 
-## 11. Files in this project
+## 12. Files in this project
 
 | File | What it does |
 | --- | --- |
@@ -233,6 +262,7 @@ Set the new name in your `.env` file locally, or as a GitHub **Variable** on the
 | `src/ai.ts` | Talks to Groq: new topics, the article, the SEO title. Retries and fallback model. |
 | `src/html.ts` | Cleans the AI HTML, adds and checks the website link, builds labels. |
 | `src/blogger.ts` | Google token exchange and the Blogger "create post" call. |
+| `src/images.ts` | Pixabay cover image: AI search query, photo pick, credit line, 24h cache. |
 | `src/store.ts` | Reads and writes `topics.json` and `state.json`. |
 | `src/log.ts` | Small logging helpers. |
 | `src/types.ts` | TypeScript types. |
@@ -243,7 +273,7 @@ Set the new name in your `.env` file locally, or as a GitHub **Variable** on the
 
 ---
 
-## 12. Safety notes
+## 13. Safety notes
 
 - All secrets come from environment variables only. They are never written to a file and never
   logged.

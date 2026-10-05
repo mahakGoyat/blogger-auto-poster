@@ -91,6 +91,8 @@ export function loadConfig(): Config {
     websiteUrl: normaliseUrl(websiteUrl as string),
     draftMode: readBoolEnv("DRAFT_MODE", true), // safe default: save as draft
     dryRun,
+    // Optional: without it the post is published without a cover image.
+    pixabayApiKey: readEnv("PIXABAY_API_KEY"),
     googleClientId,
     googleClientSecret,
     googleRefreshToken,

@@ -511,6 +511,60 @@ export async function generateAlternativeTitle(topic: Topic, existingTitles: str
     .slice(0, 140);
 }
 
+/* ------------------------------------------------------------------------- */
+/* 4. Cover image search query                                                */
+/* ------------------------------------------------------------------------- */
+
+/**
+ * Asks the model for a short Pixabay search query for a post.
+ *
+ * The query must be concrete and visual (something a photo can really show),
+ * for example "person writing resume" or "job interview office".
+ * Returns null when the answer is not usable, so the caller can fall back.
+ */
+export async function generateImageQuery(title: string): Promise<string | null> {
+  const raw = await chat(
+    [
+      {
+        role: "system",
+        content:
+          "You turn blog post titles into short image search queries. You answer with the query only.",
+      },
+      {
+        role: "user",
+        content: [
+          `Blog post title: "${title}"`,
+          "",
+          "Write ONE Pixabay image search query for the cover image of this article.",
+          "Rules:",
+          "- 2 to 4 words, all lowercase.",
+          "- Must be concrete and visual, something a real photo can show",
+          '  (for example "person writing resume", "job interview office", "cv on desk").',
+          "- No brand names, no company names, no text or numbers inside the photo.",
+          "- No punctuation, no quotes, no explanation.",
+          "",
+          "Answer with the query only.",
+        ].join("\n"),
+      },
+    ],
+    { temperature: 0.4, maxCompletionTokens: 200 },
+  );
+
+  // Keep the first line, drop quotes or markdown, and use at most 4 words.
+  const firstLine = raw.trim().split("\n")[0] ?? "";
+  const cleaned = firstLine
+    .replace(/^["'`*]+|["'`*.,]+$/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const words = cleaned.split(" ").filter(Boolean).slice(0, 4);
+  if (words.length < 2) return null;
+
+  return words.join(" ");
+}
+
 /** True when the answer looks usable as a post body. */
 export function isUsableHtml(html: string): boolean {
   return looksLikeHtml(html) && countWords(html) > 200;

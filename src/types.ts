@@ -25,6 +25,8 @@ export interface State {
   lastPublishedAt: string | null;
   /** Link to the last published Blogger post, or null. */
   lastPublishedUrl: string | null;
+  /** Pixabay photo ids already used, so cover images never repeat. */
+  usedImageIds: number[];
 }
 
 /** The values the program needs. Built by src/config.ts from env variables. */
@@ -35,6 +37,11 @@ export interface Config {
   draftMode: boolean;
   /** "true" generates a preview only: no Blogger call, no state changes. */
   dryRun: boolean;
+  /**
+   * Optional Pixabay key. When it is missing we only warn and publish the post
+   * without a cover image, so a run never fails because of the image.
+   */
+  pixabayApiKey?: string;
   /** Only needed when we actually publish (not in dry-run mode). */
   googleClientId?: string;
   googleClientSecret?: string;
