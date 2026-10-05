@@ -1,7 +1,11 @@
 {
-  "postCount": 0,
-  "publishedTitles": [],
-  "lastPublishedAt": null,
-  "lastPublishedUrl": null,
-  "usedImageIds": []
+  "postCount": 1,
+  "publishedTitles": [
+    "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?"
+  ],
+  "lastPublishedAt": "2026-10-05T07:15:57.815Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/",
+  "usedImageIds": [
+    2785863
+  ]
 }
