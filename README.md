@@ -119,7 +119,7 @@ Push this project to a GitHub repository, then add the values under
 | Variable | Value |
 | --- | --- |
 | `WEBSITE_URL` | your website, for example `https://yoursite.com` (no trailing slash) |
-| `DRAFT_MODE` | `true` while you are testing, `false` when you want live posts |
+| `DRAFT_MODE` | `true` while you are testing, `false` when you want live posts. Also applies to manual runs that leave `draft` empty. |
 | `GROQ_PRIMARY_MODEL` | optional, default `openai/gpt-oss-120b` |
 | `GROQ_FALLBACK_MODEL` | optional, default `openai/gpt-oss-20b` |
 
@@ -145,7 +145,8 @@ Then open `out/preview.html` in your browser to read the post. The `out/` folder
 ### b) Manual workflow run (draft)
 
 1. Go to the **Actions** tab -> **Daily Blog Post** -> **Run workflow**.
-2. Leave `draft` as `true` and click the green button.
+2. Leave `draft` empty (it then follows the `DRAFT_MODE` repository variable), or type
+   `true` for a draft or `false` for a live post, then click the green button.
 3. Watch the log. When it finishes you should see "Saved as a Blogger draft."
 4. Open your Blogger dashboard: the new post is in **Drafts**.
 
@@ -156,8 +157,11 @@ Then open `out/preview.html` in your browser to read the post. The `out/` folder
 There are two ways:
 
 - **For all runs:** change the GitHub variable `DRAFT_MODE` from `true` to `false`.
+  This covers the scheduled runs and any manual run where `draft` is left empty.
   Locally, change it in your `.env` file.
 - **For one run only:** start a manual workflow run and set `draft` to `false`.
+  An explicit `draft` value always beats the `DRAFT_MODE` variable; if both are
+  empty, the post is saved as a draft.
 
 Before going live, check a few drafts so you are happy with the style, the length and the links.
 

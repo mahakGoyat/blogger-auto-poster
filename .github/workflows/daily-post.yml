@@ -9,9 +9,11 @@ on:
   workflow_dispatch:
     inputs:
       draft:
-        description: '"true" saves a Blogger draft, "false" publishes live.'
+        description: >-
+          Leave empty to use the DRAFT_MODE repository variable, or type
+          "true" for a draft or "false" for a live post.
         required: false
-        default: "true"
+        default: ""
         type: string
 
 # Only one run at a time, so two posts can never be published together.
@@ -54,6 +56,9 @@ jobs:
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
           WEBSITE_URL: ${{ vars.WEBSITE_URL }}
+          # Draft or live: a manual run's `draft` input wins if it is not empty,
+          # otherwise the DRAFT_MODE repository variable is used, and if that is
+          # also empty it stays "true" so nothing ever publishes live by accident.
           DRAFT_MODE: ${{ inputs.draft || vars.DRAFT_MODE || 'true' }}
           # Optional: only set these repository variables if Groq retires a model.
           GROQ_PRIMARY_MODEL: ${{ vars.GROQ_PRIMARY_MODEL }}
