@@ -90,11 +90,17 @@ export interface PublishOptions {
 export interface PublishResult {
   id: string;
   url: string;
+  /** "LIVE" or "DRAFT" as reported by Blogger. */
+  status: string;
 }
 
 /** Step 2: create the post in Blogger (as a draft or live). */
 export async function publishPost(options: PublishOptions): Promise<PublishResult> {
   const blogId = normaliseBlogId(options.blogId);
+
+  // Draft vs live is controlled ONLY by this query parameter.
+  // The Post "status" field is read-only output (DRAFT, LIVE, SCHEDULED),
+  // so "PUBLISHED" must never be sent: the API rejects it with HTTP 400.
   const url = `${BLOGGER_API}/blogs/${blogId}/posts?alt=json&isDraft=${options.isDraft}`;
 
   logStep(`Sending the post to Blogger (${options.isDraft ? "DRAFT" : "LIVE"})...`);
@@ -105,13 +111,12 @@ export async function publishPost(options: PublishOptions): Promise<PublishResul
       "Content-Type": "application/json",
       Authorization: `Bearer ${options.accessToken}`,
     },
+    // Only writable fields: kind, title, content, labels.
     body: JSON.stringify({
-      blogId,
+      kind: "blogger#post",
       title: options.title,
       content: options.html,
       labels: options.labels,
-      status: options.isDraft ? "DRAFT" : "PUBLISHED",
-      isDraft: options.isDraft,
     }),
   });
 
@@ -134,8 +139,12 @@ export async function publishPost(options: PublishOptions): Promise<PublishResul
     );
   }
 
-  const data = (await response.json()) as { id?: string; url?: string };
+  const data = (await response.json()) as { id?: string; url?: string; status?: string };
+  const status = data.status ?? "unknown";
+  const postUrl = data.url ?? "";
+  // "status" and "url" are safe to print: they are plain post data, no secrets.
   logInfo(`Blogger accepted the post (id: ${data.id ?? "unknown"}).`);
+  logInfo(`Blogger reports status: ${status}${postUrl ? ` | url: ${postUrl}` : ""}`);
 
-  return { id: data.id ?? "", url: data.url ?? "" };
+  return { id: data.id ?? "", url: postUrl, status };
 }
