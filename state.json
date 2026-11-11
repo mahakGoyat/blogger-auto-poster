@@ -1,5 +1,5 @@
 {
-  "postCount": 70,
+  "postCount": 71,
   "publishedTitles": [
     "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?",
     "How to Pass ATS Screening When You Apply for a Job",
@@ -70,10 +70,11 @@
     "How to Answer “What Is Your Expected Salary?”",
     "How to Negotiate a Job Offer Over Email",
     "Common interview mistakes that cost you the job offer",
-    "How to Prepare for a Technical Interview as a Fresher"
+    "How to Prepare for a Technical Interview as a Fresher",
+    "Data Structures Interview Preparation for Beginners"
   ],
-  "lastPublishedAt": "2026-11-10T19:55:41.681Z",
-  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-to-prepare-for-technical-interview.html",
+  "lastPublishedAt": "2026-11-11T11:16:40.542Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/data-structures-interview-preparation.html",
   "usedImageIds": [
     2785863,
     8441683,
@@ -144,6 +145,7 @@
     3261425,
     545394,
     10230639,
-    9879715
+    9879715,
+    407126
   ]
 }
