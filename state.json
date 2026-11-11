@@ -1,5 +1,5 @@
 {
-  "postCount": 71,
+  "postCount": 72,
   "publishedTitles": [
     "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?",
     "How to Pass ATS Screening When You Apply for a Job",
@@ -71,10 +71,11 @@
     "How to Negotiate a Job Offer Over Email",
     "Common interview mistakes that cost you the job offer",
     "How to Prepare for a Technical Interview as a Fresher",
-    "Data Structures Interview Preparation for Beginners"
+    "Data Structures Interview Preparation for Beginners",
+    "How to Explain Your Projects Clearly in an Interview"
   ],
-  "lastPublishedAt": "2026-11-11T11:16:40.542Z",
-  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/data-structures-interview-preparation.html",
+  "lastPublishedAt": "2026-11-11T19:47:41.306Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-to-explain-your-projects-clearly-in.html",
   "usedImageIds": [
     2785863,
     8441683,
@@ -146,6 +147,7 @@
     545394,
     10230639,
     9879715,
-    407126
+    407126,
+    1868728
   ]
 }
