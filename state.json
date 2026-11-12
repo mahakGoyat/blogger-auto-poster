@@ -1,5 +1,5 @@
 {
-  "postCount": 73,
+  "postCount": 74,
   "publishedTitles": [
     "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?",
     "How to Pass ATS Screening When You Apply for a Job",
@@ -73,10 +73,11 @@
     "How to Prepare for a Technical Interview as a Fresher",
     "Data Structures Interview Preparation for Beginners",
     "How to Explain Your Projects Clearly in an Interview",
-    "SQL Interview Questions You Must Know for Data Jobs"
+    "SQL Interview Questions You Must Know for Data Jobs",
+    "An Introduction to System Design Interviews for First‑Time Candidates"
   ],
-  "lastPublishedAt": "2026-11-12T11:34:25.011Z",
-  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/sql-interview-questions-you-must-know.html",
+  "lastPublishedAt": "2026-11-12T20:16:28.993Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/an-introduction-to-system-design.html",
   "usedImageIds": [
     2785863,
     8441683,
@@ -150,6 +151,7 @@
     9879715,
     407126,
     1868728,
-    849822
+    849822,
+    10219062
   ]
 }
