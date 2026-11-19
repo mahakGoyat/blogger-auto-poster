@@ -1,5 +1,5 @@
 {
-  "postCount": 87,
+  "postCount": 88,
   "publishedTitles": [
     "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?",
     "How to Pass ATS Screening When You Apply for a Job",
@@ -87,10 +87,11 @@
     "How to Remove Your Address, Photo, and Gender from a Resume",
     "Resume Mistakes Graduates Make When Applying for Jobs Abroad",
     "How to Convert Your Resume to PDF Without Breaking the Layout",
-    "How to Create a Professional Email ID for Job Applications"
+    "How to Create a Professional Email ID for Job Applications",
+    "How Applicant Tracking Systems Read and Parse Your Resume"
   ],
-  "lastPublishedAt": "2026-11-19T11:57:14.714Z",
-  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-to-create-professional-email-id-for.html",
+  "lastPublishedAt": "2026-11-19T20:53:47.905Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-applicant-tracking-systems-read-and.html",
   "usedImageIds": [
     2785863,
     8441683,
@@ -178,6 +179,7 @@
     2910636,
     6066661,
     2979648,
-    3689236
+    3689236,
+    10160191
   ]
 }
