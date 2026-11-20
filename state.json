@@ -1,5 +1,5 @@
 {
-  "postCount": 89,
+  "postCount": 90,
   "publishedTitles": [
     "What is an ATS‑Friendly Resume and Why Do Recruiters Use It?",
     "How to Pass ATS Screening When You Apply for a Job",
@@ -89,10 +89,11 @@
     "How to Convert Your Resume to PDF Without Breaking the Layout",
     "How to Create a Professional Email ID for Job Applications",
     "How Applicant Tracking Systems Read and Parse Your Resume",
-    "How Recruiters Rank Resumes After an ATS Parses Them"
+    "How Recruiters Rank Resumes After an ATS Parses Them",
+    "How to Improve Your ATS Keyword Match Score"
   ],
-  "lastPublishedAt": "2026-11-20T11:57:44.479Z",
-  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-recruiters-rank-resumes-after-ats.html",
+  "lastPublishedAt": "2026-11-20T20:39:05.401Z",
+  "lastPublishedUrl": "https://resumeatsguide.blogspot.com/2026/11/how-to-improve-your-ats-keyword-match.html",
   "usedImageIds": [
     2785863,
     8441683,
@@ -182,6 +183,7 @@
     2979648,
     3689236,
     10160191,
-    2580867
+    2580867,
+    2785932
   ]
 }
