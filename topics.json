@@ -507,7 +507,7 @@
   {
     "id": "t102",
     "title": "Resume templates: when they help and when they hurt",
-    "used": false
+    "used": true
   },
   {
     "id": "t103",
@@ -597,6 +597,276 @@
   {
     "id": "t120",
     "title": "A realistic 60-day job search plan for freshers",
+    "used": false
+  },
+  {
+    "id": "t121",
+    "title": "How to add a QR code to your resume for quick portfolio access",
+    "used": false
+  },
+  {
+    "id": "t122",
+    "title": "What ATS keywords matter for product manager roles",
+    "used": false
+  },
+  {
+    "id": "t123",
+    "title": "Why a professional summary beats an objective for senior candidates",
+    "used": false
+  },
+  {
+    "id": "t124",
+    "title": "How to showcase remote teamwork skills on a resume",
+    "used": false
+  },
+  {
+    "id": "t125",
+    "title": "What is the best LinkedIn banner image for job seekers",
+    "used": false
+  },
+  {
+    "id": "t126",
+    "title": "How to write a cover letter for a career change to UX design",
+    "used": false
+  },
+  {
+    "id": "t127",
+    "title": "Why recruiters skim the first 3 bullet points on a resume",
+    "used": false
+  },
+  {
+    "id": "t128",
+    "title": "How to format certifications for an engineering resume",
+    "used": false
+  },
+  {
+    "id": "t129",
+    "title": "What ATS filters look for in a data science project description",
+    "used": false
+  },
+  {
+    "id": "t130",
+    "title": "How to turn a gap year into a strength on your CV",
+    "used": false
+  },
+  {
+    "id": "t131",
+    "title": "Why a customized LinkedIn URL improves recruiter searchability",
+    "used": false
+  },
+  {
+    "id": "t132",
+    "title": "How to list contract work without confusing ATS parsers",
+    "used": false
+  },
+  {
+    "id": "t133",
+    "title": "What is the optimal resume file size for email attachments",
+    "used": false
+  },
+  {
+    "id": "t134",
+    "title": "How to use action‑result format for sales achievements",
+    "used": false
+  },
+  {
+    "id": "t135",
+    "title": "Why including a portfolio link boosts chances for graphic designers",
+    "used": false
+  },
+  {
+    "id": "t136",
+    "title": "How to write a cover letter that addresses a hiring manager by name",
+    "used": false
+  },
+  {
+    "id": "t137",
+    "title": "What LinkedIn endorsements actually influence recruiters",
+    "used": false
+  },
+  {
+    "id": "t138",
+    "title": "How to highlight leadership in non‑managerial roles on a resume",
+    "used": false
+  },
+  {
+    "id": "t139",
+    "title": "Why adding a professional headline on LinkedIn matters for recruiters",
+    "used": false
+  },
+  {
+    "id": "t140",
+    "title": "How to create a resume that passes both ATS and human review",
+    "used": false
+  },
+  {
+    "id": "t141",
+    "title": "What soft‑skill keywords are most searched by HR software",
+    "used": false
+  },
+  {
+    "id": "t142",
+    "title": "How to reference a published paper on a research resume",
+    "used": false
+  },
+  {
+    "id": "t143",
+    "title": "Why you should avoid tables in an ATS‑friendly resume",
+    "used": false
+  },
+  {
+    "id": "t144",
+    "title": "How to quantify volunteer impact for nonprofit job applications",
+    "used": false
+  },
+  {
+    "id": "t145",
+    "title": "What is the best way to list multiple languages on a resume",
+    "used": false
+  },
+  {
+    "id": "t146",
+    "title": "How to tailor a cover letter for a startup versus a corporation",
+    "used": false
+  },
+  {
+    "id": "t147",
+    "title": "Why a concise LinkedIn summary drives more profile views",
+    "used": false
+  },
+  {
+    "id": "t148",
+    "title": "How to incorporate industry buzzwords without keyword stuffing",
+    "used": false
+  },
+  {
+    "id": "t149",
+    "title": "What ATS settings cause resumes to be flagged as duplicates",
+    "used": false
+  },
+  {
+    "id": "t150",
+    "title": "How to write a resume bullet for a customer support role with metrics",
+    "used": false
+  },
+  {
+    "id": "t151",
+    "title": "Why a clear contact section reduces recruiter bounce rates",
+    "used": false
+  },
+  {
+    "id": "t152",
+    "title": "How to use LinkedIn’s “Featured” section to showcase work samples",
+    "used": false
+  },
+  {
+    "id": "t153",
+    "title": "What resume layout works best for creative professionals",
+    "used": false
+  },
+  {
+    "id": "t154",
+    "title": "How to address a career break due to caregiving in a cover letter",
+    "used": false
+  },
+  {
+    "id": "t155",
+    "title": "Why using a simple PDF version improves ATS parsing accuracy",
+    "used": false
+  },
+  {
+    "id": "t156",
+    "title": "How to list hackathon wins on a tech resume effectively",
+    "used": false
+  },
+  {
+    "id": "t157",
+    "title": "What LinkedIn groups should you join for finance job leads",
+    "used": false
+  },
+  {
+    "id": "t158",
+    "title": "How to describe freelance web development projects for ATS",
+    "used": false
+  },
+  {
+    "id": "t159",
+    "title": "Why a professional email domain increases interview callbacks",
+    "used": false
+  },
+  {
+    "id": "t160",
+    "title": "How to write a cover letter that answers the company’s mission statement",
+    "used": false
+  },
+  {
+    "id": "t161",
+    "title": "What resume action verbs resonate most with biotech recruiters",
+    "used": false
+  },
+  {
+    "id": "t162",
+    "title": "How to embed a video introduction link in a digital resume",
+    "used": false
+  },
+  {
+    "id": "t163",
+    "title": "Why a clean LinkedIn photo boosts connection acceptance rates",
+    "used": false
+  },
+  {
+    "id": "t164",
+    "title": "How to structure a resume for a dual‑degree graduate",
+    "used": false
+  },
+  {
+    "id": "t165",
+    "title": "What ATS‑compatible bullet symbols should you avoid",
+    "used": false
+  },
+  {
+    "id": "t166",
+    "title": "How to reflect continuous learning on a resume for IT roles",
+    "used": false
+  },
+  {
+    "id": "t167",
+    "title": "Why a targeted LinkedIn headline beats a generic job title",
+    "used": false
+  },
+  {
+    "id": "t168",
+    "title": "How to list remote tools proficiency for a virtual assistant resume",
+    "used": false
+  },
+  {
+    "id": "t169",
+    "title": "What keywords to use for a sustainability analyst position",
+    "used": false
+  },
+  {
+    "id": "t170",
+    "title": "How to write a cover letter that aligns with a company's values",
+    "used": false
+  },
+  {
+    "id": "t171",
+    "title": "Why a concise achievements section outranks a long responsibilities list",
+    "used": false
+  },
+  {
+    "id": "t172",
+    "title": "How to use LinkedIn recommendations to strengthen your application",
+    "used": false
+  },
+  {
+    "id": "t173",
+    "title": "What resume section order works best for senior project managers",
+    "used": false
+  },
+  {
+    "id": "t174",
+    "title": "How to convey cross‑functional collaboration on a single line",
     "used": false
   }
 ]
